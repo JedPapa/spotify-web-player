@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 const port = 5000
 
-let access_token = ''
+var access_token = ''
 
 dotenv.config()
 
@@ -63,6 +63,9 @@ app.get('/auth/callback', (req, res) => {
         if (!error && response.statusCode === 200) {
             access_token = body.access_token;
             res.redirect('/')
+        }
+        else {
+            console.log("request post error");
         }
     });
 })
